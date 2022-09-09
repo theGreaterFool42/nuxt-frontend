@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@pinia/nuxt": "^0.4.1",
+    "nuxt": "3.0.0-rc.9"
+  },
+  "dependencies": {
+    "mdi": "^2.2.43",
+    "pinia": "^2.0.21",
+    "sass": "^1.54.8",
+    "vuetify": "^3.0.0-beta.10"
+  }
+}
