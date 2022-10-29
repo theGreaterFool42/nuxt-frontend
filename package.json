@@ -5,16 +5,31 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "yarn upgrade"
   },
   "devDependencies": {
-    "@pinia/nuxt": "^0.4.1",
-    "nuxt": "3.0.0-rc.9"
+    "@nuxtjs/tailwindcss": "^6.1.2",
+    "@pinia/nuxt": "^0.4.3",
+    "@types/uuid": "^8.3.4",
+    "nuxt": "rc",
+    "prisma": "^4.5.0"
   },
   "dependencies": {
-    "mdi": "^2.2.43",
-    "pinia": "^2.0.21",
-    "sass": "^1.54.8",
-    "vuetify": "^3.0.0-beta.10"
+    "@headlessui/vue": "^1.7.3",
+    "@heroicons/vue": "^2.0.12",
+    "@mdi/font": "^7.0.96",
+    "@prisma/client": "^4.5.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.32.0",
+    "formidable": "^2.0.1",
+    "human-time": "^0.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mitt": "^3.0.0",
+    "pinia": "^2.0.23",
+    "sass": "^1.55.0",
+    "url-pattern": "^1.0.3",
+    "uuid": "^9.0.0"
   }
 }

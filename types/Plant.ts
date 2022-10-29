@@ -8,3 +8,9 @@ export interface IPlant {
   createdAt: Date;
   data: IPlantData[];
 }
+
+export interface IPlantToAdd {
+  title: string;
+  category: string;
+  plantedAt: Date;
+}
