@@ -21,7 +21,8 @@
                         </div>
                     </div>
                     <div class="flex h-full">
-                        <button class="px-4 py-2 rounded-full font-bold text-sx text-white dark:text-black bg-black dark:bg-white">Follow</button>
+                        <button
+                            class="px-4 py-2 rounded-full font-bold text-sx text-white dark:text-black bg-black dark:bg-white">Follow</button>
                     </div>
                 </div>
             </SidebarRightPreviewCardItem>

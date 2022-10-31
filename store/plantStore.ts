@@ -1,7 +1,7 @@
 import { IPlantData } from './../types/PlantData';
 import { IPlant, IPlantToAdd } from './../types/Plant';
 import { defineStore } from 'pinia';
-import { v4 as uuid } from 'uuid'
+import { v4 as uuid } from 'uuid';
 
 export interface PlantState {
   plants: IPlant[] | undefined[];
@@ -15,10 +15,11 @@ const getters = {
   getById: (state: PlantState) => (id: string) => {
     return state.plants.find((item: IPlant | undefined) => item.id === id);
   },
-  getOrderedPlants: (state: PlantState) => state.plants.sort(
-    (a: IPlant, b: IPlant) =>
-      a.createdAt.getMilliseconds() - b.createdAt.getMilliseconds()
-  )
+  getOrderedPlants: (state: PlantState) =>
+    state.plants.sort(
+      (a: IPlant, b: IPlant) =>
+        a.createdAt.getMilliseconds() - b.createdAt.getMilliseconds()
+    ),
 };
 
 const actions = {
@@ -27,10 +28,10 @@ const actions = {
       id: uuid(),
       ...plantToAdd,
       createdAt: new Date(),
-      data: [] as IPlantData[]
-    }
-    this.plants.push(plant)
-  }
+      data: [] as IPlantData[],
+    };
+    this.plants.push(plant);
+  },
 };
 
 export const usePlantStore = defineStore('plantStore', {

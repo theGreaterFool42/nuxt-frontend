@@ -4,7 +4,7 @@
     </div>
 </template>
 <script setup>
-const {defaultTransition, customBorderColor } = useTailwindConfig()
+const { defaultTransition, customBorderColor } = useTailwindConfig()
 
 const wrapperClasses = computed(() => `${defaultTransition} ${customBorderColor}`)
 </script>
