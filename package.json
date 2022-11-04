@@ -8,10 +8,13 @@
     "postinstall": "yarn upgrade"
   },
   "devDependencies": {
+    "@nuxtjs/color-mode": "3.1.8",
     "@nuxtjs/tailwindcss": "^6.1.2",
     "@pinia/nuxt": "^0.4.3",
+    "@types/bcrypt": "5.0.0",
+    "@types/jsonwebtoken": "^8.5.9",
     "@types/uuid": "^8.3.4",
-    "nuxt": "rc",
+    "nuxt": "^3.0.0-rc.13",
     "prisma": "^4.5.0"
   },
   "dependencies": {
@@ -28,6 +31,7 @@
     "jwt-decode": "^3.1.2",
     "mitt": "^3.0.0",
     "pinia": "^2.0.23",
+    "prisma": "^4.5.0",
     "sass": "^1.55.0",
     "url-pattern": "^1.0.3",
     "uuid": "^9.0.0"

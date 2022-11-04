@@ -1,4 +1,4 @@
-# Nuxt 3 Minimal Starter
+# Nuxt frontend for socialPlants
 
 Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
@@ -9,12 +9,25 @@ Make sure to install the dependencies:
 ```bash
 # yarn
 yarn install
+```
 
-# npm
-npm install
+## Postgres DB
 
-# pnpm
-pnpm install --shamefully-hoist
+### Windows Setup
+
+Download the windows postgres installer at https://www.postgresql.org/download/windows/ and foollow the steps
+
+Edit the .env file to match your db connection
+
+```bash
+npx prisma init
+npx prisma push
+```
+
+Check your db with
+
+```bash
+npx prisma studio
 ```
 
 ## Development Server
@@ -22,7 +35,7 @@ pnpm install --shamefully-hoist
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 ## Production
@@ -30,13 +43,7 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
+yarn run build
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
