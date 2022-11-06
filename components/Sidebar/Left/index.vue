@@ -8,7 +8,7 @@
         <template v-slot:name>Home</template>
       </SidebarLeftTab>
 
-      <SidebarLeftTab link="/signUp">
+      <SidebarLeftTab link="/sign/authPage">
         <template v-slot:icon>
           <UserIcon />
         </template>

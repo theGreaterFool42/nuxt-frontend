@@ -13,7 +13,7 @@
     <div
       class="p-3 text-sm text-blue-400 cursor-pointer hover:bg-gray-100 dark:hover:bg-dim-300"
       :class="defaultTransition"
-      @click="register('Keks')"
+      @click="localRegister('Keks')"
     >
       Show more
     </div>
@@ -21,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { register } from '~~/server/db/user';
-
 const { customBorderColor, defaultTransition } = useTailwindConfig();
 const props = defineProps({
   title: {

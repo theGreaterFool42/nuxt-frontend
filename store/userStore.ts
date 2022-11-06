@@ -1,17 +1,17 @@
-import { defineStore } from 'pinia';
+// import { defineStore } from 'pinia';
 
-const state = () => ({
-  id: '',
-  name: '',
-  email: '',
-});
+// const state = () => ({
+//   id: '',
+//   name: '',
+//   email: '',
+// });
 
-const getters = {};
+// const getters = {};
 
-const actions = {};
+// const actions = {};
 
-export const useUserStore = defineStore('plantStore', {
-  state,
-  getters,
-  actions,
-});
+// export const useUserStore = defineStore('plantStore', {
+//   state,
+//   getters,
+//   actions,
+// });

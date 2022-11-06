@@ -10,14 +10,14 @@
 
 <script setup lang="ts">
 import { usePlantStore } from '~~/store/plantStore';
-import { IPlantToAdd } from '~~/types/Plant';
-const testPlant = ref({ title: 'Klaus', category: 'Awesome Plant', plantedAt: new Date() } as IPlantToAdd)
-const plantStore = usePlantStore()
+import { IPlantToAdd } from '~/types/IPlant';
+const testPlant = ref({
+  title: 'Klaus',
+  category: 'Awesome Plant',
+  plantedAt: new Date(),
+} as IPlantToAdd);
+const plantStore = usePlantStore();
 console.log(plantStore.plants);
+</script>
 
-
-</script> 
-
-<style>
-
-</style>
+<style></style>

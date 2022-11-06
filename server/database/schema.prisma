@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider             = "postgresql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model User {
+  id           String    @id @default(cuid()) @map("_id")
+  password     String?
+  email        String?   @unique
+  name         String?
+  username     String?   @unique
+  profileImage String?
+  session      Session[]
+  plants       Plant[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  authToken String    @unique
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+}
+
+model Plant {
+  id        String      @id @default(cuid())
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String
+  title     String
+  category  String
+  plantedAt DateTime
+  createdAt DateTime    @default(now()) @map(name: "created_at")
+  data      PlantData[]
+
+  @@map("plants")
+}
+
+model PlantData {
+  id           String   @id @default(cuid())
+  plant        Plant    @relation(fields: [plantId], references: [id])
+  plantId      String
+  temperature  Float
+  soilHumidity Float
+  light        Float
+  airHumidity  Float
+  timeStamp    DateTime @default(now())
+}

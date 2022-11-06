@@ -4,7 +4,7 @@ export async function signUpWithEmail(
   name: string,
   email: string,
   password: string
-): Promise<FormValidation> {
+): Promise<FormValidation | undefined> {
   try {
     const res = await $fetch<ISession>('api/auth/sign/up', {
       method: 'POST',
@@ -19,7 +19,7 @@ export async function signUpWithEmail(
       );
       return { hasErrors: true, errors: errorMap };
     }
-  } catch (e) {
+  } catch (e: any) {
     console.log('error: ', e.toString());
   }
 }

@@ -7,16 +7,19 @@ const password = ref(null);
 const username = ref(null);
 const name = ref(null);
 const errors = ref(new Map());
-const response = ref<FormValidation>({ hasErrors: false });
+let response = ref<FormValidation>({ hasErrors: false });
 
+// async function postSignUpForm() {
+//   response.value = await signUpWithEmail(
+//     username.value,
+//     name.value,
+//     email.value,
+//     password.value
+//   );
+//   errors.value = response.value.errors;
+// }
 async function postSignUpForm() {
-  response.value = await signUpWithEmail(
-    username.value,
-    name.value,
-    email.value,
-    password.value
-  );
-  errors.value = response.value.errors;
+  console.log('SignUp');
 }
 </script>
 

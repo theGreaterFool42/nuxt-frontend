@@ -1,6 +1,4 @@
-import { IUser } from './User';
-
 export interface ISession {
-  authToken?: string;
-  user?: IUser;
+  authToken: string;
+  userId: string;
 }

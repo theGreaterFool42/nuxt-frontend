@@ -7,7 +7,8 @@
     <slot></slot>
     <div class="w-6 h-6 text-dark">
       <div v-if="useColorMode().preference == 'dark'"><SunIcon /></div>
-      <div v-if="colorMode == 'light'"><MoonIcon /></div>
+      <div v-else-if="colorMode == 'light'"><MoonIcon /></div>
+      <div v-else><MoonIcon /></div>
     </div>
     <div class="hidden ml-4 text-xl xl:block" :class="textClasses">
       <slot name="name"></slot>
@@ -30,7 +31,7 @@ const textClasses = computed(() =>
   props.active ? 'font-semibold' : 'font-normal'
 );
 const colorMode = ref('');
-const setColorTheme = (newTheme) => {
+const setColorTheme = (newTheme: Theme) => {
   useColorMode().preference = newTheme;
   colorMode.value = newTheme;
 };

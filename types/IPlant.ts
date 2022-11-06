@@ -1,4 +1,4 @@
-import { IPlantData } from 'types/PlantData';
+import { IPlantData } from '~/types/IPlantData';
 
 export interface IPlant {
   id: string;

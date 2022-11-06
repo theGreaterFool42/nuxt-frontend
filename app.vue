@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white dark:bg-dim-900">
-    <div class="min-h-full">
+    <div v-if="true" class="min-h-full">
       <div
         class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
       >
@@ -23,9 +23,12 @@
         </div>
       </div>
     </div>
+    <AuthPage v-else />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AuthPage from './pages/sign/authPage.vue';
+</script>
 
 <style scoped lang="scss"></style>

@@ -5,17 +5,17 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
-    [
-      '@pinia/nuxt',
-      {
-        autoImports: [
-          // automatically imports `defineStore`
-          'defineStore', // import { defineStore } from 'pinia'
-          // automatically imports `defineStore` as `definePiniaStore`
-          ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
-        ],
-      },
-    ],
+    // [
+    //   '@pinia/nuxt',
+    //   {
+    //     autoImports: [
+    //       // automatically imports `defineStore`
+    //       'defineStore', // import { defineStore } from 'pinia'
+    //       // automatically imports `defineStore` as `definePiniaStore`
+    //       ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+    //     ],
+    //   },
+    // ],
   ],
   tailwindcss: {
     cssPath: '~/assets/css/tailwind.css',
@@ -27,5 +27,9 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
+  },
+  runtimeConfig: {
+    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
+    jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
   },
 });
