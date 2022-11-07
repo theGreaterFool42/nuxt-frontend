@@ -13,7 +13,6 @@
     <div
       class="p-3 text-sm text-blue-400 cursor-pointer hover:bg-gray-100 dark:hover:bg-dim-300"
       :class="defaultTransition"
-      @click="localRegister('Keks')"
     >
       Show more
     </div>
@@ -28,20 +27,4 @@ const props = defineProps({
     required: true,
   },
 });
-const hello = () => {
-  console.log('Hallo');
-};
-
-const localRegister = async (username: string) => {
-  console.log(username);
-  try {
-    const res = await $fetch<unknown>('url', {
-      method: 'POST',
-      body: { username },
-    });
-    console.log(res);
-  } catch (e) {
-    console.log(e);
-  }
-};
 </script>

@@ -1,15 +1,7 @@
-export type ISignUpErrors = {
-  hasErrors?: string;
-};
-
-export type SignUpResponse = {
-  hasErrors: boolean;
-  errors?: ISignUpErrors;
-};
-
-export type SignUpRequest = {
+export type ISignUp = {
   name: string;
-  username?: string;
-  email?: string;
-  password?: string;
+  username: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
 };

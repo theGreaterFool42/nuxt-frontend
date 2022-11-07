@@ -31,7 +31,7 @@
 
       <SidebarLeftTab link="/signOut">
         <template v-slot:icon>
-          <DocumentIcon />
+          <ArrowLeftOnRectangleIcon />
         </template>
         <template v-slot:name>Logout</template>
       </SidebarLeftTab>
@@ -45,11 +45,9 @@
 <script setup lang="ts">
 import {
   HomeIcon,
-  SunIcon,
-  MoonIcon,
   UserIcon,
   CloudIcon,
   CogIcon,
-  DocumentIcon,
+  ArrowLeftOnRectangleIcon,
 } from '@heroicons/vue/24/solid';
 </script>

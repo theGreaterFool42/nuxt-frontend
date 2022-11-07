@@ -49,7 +49,6 @@ export default defineEventHandler(async (event) => {
 
   return {
     user: userTransformer(user),
-    doesThePasswordMatch,
     access_token: accessToken,
   };
 });

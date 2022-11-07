@@ -7,8 +7,6 @@
       - [x] in
       - [ ] out
       - [ ] up
-    - [x] token
-    - [x] hash/encrypt
   - [ ] view to add plants
     - [ ] upload photos
     - [ ] view for plantData
@@ -31,6 +29,8 @@
 - ## Backend
 
   - [x] User CRUD
+    - [x] token
+    - [x] hash/encrypt
   - [ ] Plant CRUD
   - [ ] Post CRUD
   - [ ] Plant data CRUD

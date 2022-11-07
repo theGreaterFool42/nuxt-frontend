@@ -1,5 +1,6 @@
 import { JwtPayload } from 'jsonwebtoken';
 import jwt_decode from 'jwt-decode';
+import { ISignUp } from '~~/types/ISignUp';
 import { IUser } from '~~/types/IUser';
 
 export default () => {
@@ -31,6 +32,25 @@ export default () => {
         });
         setToken(response.access_token);
         setUser(response.user);
+        resolve(true);
+      } catch (error) {
+        reject(error);
+      }
+    });
+  };
+  const signUp = (signUpRequest: ISignUp) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const response = await $fetch('/api/auth/sign/up', {
+          method: 'POST',
+          body: {
+            name: signUpRequest.name,
+            username: signUpRequest.username,
+            email: signUpRequest.email,
+            password: signUpRequest.password,
+            repeatPassword: signUpRequest.repeatPassword,
+          },
+        });
         resolve(true);
       } catch (error) {
         reject(error);
@@ -94,5 +114,12 @@ export default () => {
     });
   };
 
-  return { signIn, useAuthUser, useAuthToken, useAuthLoading, initAuth };
+  return {
+    signIn,
+    signUp,
+    useAuthUser,
+    useAuthToken,
+    useAuthLoading,
+    initAuth,
+  };
 };

@@ -6,7 +6,6 @@
         label="Username"
         placeholder="@username"
       />
-      <h2>{{ data.password }}</h2>
       <UIInput
         v-model="data.password"
         label="Password"
@@ -14,7 +13,7 @@
         type="password"
       />
       <div>
-        <button @click="handleLogin">Login</button>
+        <button @click="handleLogin">SignIn</button>
       </div>
     </div>
   </div>
