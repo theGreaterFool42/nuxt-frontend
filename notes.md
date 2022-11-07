@@ -22,7 +22,7 @@
 - ## Backend
 
   - [x] User CRUD
-  - Plant CRUD
+  - [ ] Plant CRUD
   - Post CRUD
   - Plant data CRUD
   - go online
