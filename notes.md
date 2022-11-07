@@ -21,7 +21,7 @@
 
 - ## Backend
 
-  - User CRUD
+  - [x] User CRUD
   - Plant CRUD
   - Post CRUD
   - Plant data CRUD

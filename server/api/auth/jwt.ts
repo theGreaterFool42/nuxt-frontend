@@ -18,6 +18,24 @@ const generateRefreshToken = (user: IUser) => {
   });
 };
 
+export const decodeRefreshToken = (token: string) => {
+  const config = useRuntimeConfig();
+  try {
+    return jwt.verify(token, config.jwtRefreshSecret);
+  } catch (error) {
+    return null;
+  }
+};
+
+export const decodeAccessToken = (token: string) => {
+  const config = useRuntimeConfig();
+  try {
+    return jwt.verify(token, config.jwtAccessSecret);
+  } catch (error) {
+    return null;
+  }
+};
+
 export const generateTokens = (user: IUser) => {
   const accessToken = generateAccessToken(user);
   const refreshToken = generateRefreshToken(user);

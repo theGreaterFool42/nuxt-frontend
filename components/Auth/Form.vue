@@ -24,9 +24,17 @@
 const data = reactive({
   username: '',
   password: '',
+  loading: false,
 });
 
 function handleLogin() {
-  alert(JSON.stringify(data));
+  const { signIn } = useAuth();
+  data.loading = true;
+  try {
+    signIn(data.username, data.password);
+  } catch (error) {
+  } finally {
+    data.loading = false;
+  }
 }
 </script>

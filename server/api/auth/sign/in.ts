@@ -31,6 +31,16 @@ export default defineEventHandler(async (event) => {
 
   const doesThePasswordMatch = await bcrypt.compare(password, user.password!);
 
+  if (!doesThePasswordMatch) {
+    return sendError(
+      event,
+      createError({
+        statusCode: 400,
+        statusMessage: 'Password does not match',
+      })
+    );
+  }
+
   const { accessToken, refreshToken } = generateTokens(user);
 
   await createSession({ authToken: refreshToken, userId: user.id! });

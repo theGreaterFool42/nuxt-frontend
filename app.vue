@@ -1,6 +1,7 @@
 <template>
   <div class="bg-white dark:bg-dim-900">
-    <div v-if="true" class="min-h-full">
+    <LoadingPage v-if="isAuthLoading" />
+    <div v-else-if="user" class="min-h-full">
       <div
         class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-5"
       >
@@ -29,6 +30,14 @@
 
 <script setup lang="ts">
 import AuthPage from './pages/sign/authPage.vue';
+import LoadingPage from './pages/sign/loadingPage.vue';
+const { useAuthUser, initAuth, useAuthLoading } = useAuth();
+const user = useAuthUser();
+const isAuthLoading = useAuthLoading();
+
+onBeforeMount(() => {
+  initAuth();
+});
 </script>
 
 <style scoped lang="scss"></style>

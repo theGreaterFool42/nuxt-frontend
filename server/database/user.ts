@@ -1,4 +1,4 @@
-import prisma from '.';
+import prisma from './client';
 import bcrypt from 'bcrypt';
 import { IUser } from '~~/types/IUser';
 
