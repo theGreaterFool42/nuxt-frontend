@@ -1,7 +1,7 @@
 <template>
   <button
     @click="setColorTheme($colorMode.preference == 'dark' ? 'light' : 'dark')"
-    class="flex items-center p-3 w-min rounded-full hover:bg-gray-200 dark:hover:bg-dim-200 text-black dark:text-white"
+    class="flex items-center p-3 w-min rounded-full hover:bg-light-primaryContainer dark:hover:bg-dim-200 text-light-textColor dark:text-white"
     :class="defaultTransition"
   >
     <slot></slot>

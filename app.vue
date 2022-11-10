@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-dim-900">
+  <div class="bg-light-background dark:bg-dark-background">
     <LoadingPage v-if="isAuthLoading" />
     <div v-else-if="user" class="min-h-full">
       <div

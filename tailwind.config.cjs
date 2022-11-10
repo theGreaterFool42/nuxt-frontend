@@ -11,6 +11,58 @@ module.exports = {
     },
     extend: {
       colors: {
+        light: {
+          primary: '#2D495E',
+          onPrimary: '#FFFFFF',
+          primaryContainer: '#C0C8CF',
+          onPrimaryContainer: '#2D495E',
+
+          secondary: '#4A708B',
+          onSecondary: '#FFFFFF',
+          secondaryContainer: '#C9D4DC',
+          onSecondaryContainer: '#4A708B',
+
+          tertiary: '#EE8449',
+          onTertiary: '#FFFFFF',
+          tertiaryContainer: '#FADAC8',
+          onTertiaryContainer: '#EE8449',
+
+          background: '#E6E9EC',
+          onBackground: '2D495E', //primary
+
+          surface: '#E6E9EC',
+          onSurface: '#2D495E', //primary
+
+          outline: '#2D495E', //primary
+
+          textColor: '#000000',
+        },
+        dark: {
+          primary: '#2D495E',
+          onPrimary: '#192734',
+          primaryContainer: '#38444d',
+          onPrimaryContainer: '#2D495E',
+
+          secondary: '#4A708B',
+          onSecondary: '#FFFFFF',
+          secondaryContainer: '#C9D4DC',
+          onSecondaryContainer: '#4A708B',
+
+          tertiary: '#EE8449',
+          onTertiary: '#FFFFFF',
+          tertiaryContainer: '#FADAC8',
+          onTertiaryContainer: '#EE8449',
+
+          background: '#15202B',
+          onBackground: '2D495E', //primary
+
+          surface: '#E6E9EC',
+          onSurface: '#2D495E', //primary
+
+          outline: '#2D495E', //primary
+
+          textColor: '#FFFFFF',
+        },
         dim: {
           50: '#5F99F7',
           100: '#5F99F7',

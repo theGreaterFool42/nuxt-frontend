@@ -1,16 +1,14 @@
+import { IUser } from '~~/types/IUser';
 import { IPlantData } from '~/types/IPlantData';
 
 export interface IPlant {
-  id: string;
+  id?: string;
   title: string;
   category: string;
+  image?: string;
   plantedAt: Date;
-  createdAt: Date;
-  data: IPlantData[];
-}
-
-export interface IPlantToAdd {
-  title: string;
-  category: string;
-  plantedAt: Date;
+  // createdAt: Date;
+  userId: string;
+  postId?: string;
+  data?: IPlantData[];
 }

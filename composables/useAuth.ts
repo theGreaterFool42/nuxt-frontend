@@ -90,12 +90,13 @@ export default () => {
       return;
     }
     const jwt = jwt_decode(authToken.value as string) as JwtPayload;
-    const newRefreshTime = jwt.exp! - 6000;
+    const newRefreshTime = jwt.exp! - 60000;
 
+    //if session token still valid and the user is logged in, send a new one
     setTimeout(async () => {
       await refreshSessionToken();
       refreshSession();
-    }, newRefreshTime);
+    }, 300000);
   };
 
   const initAuth = () => {

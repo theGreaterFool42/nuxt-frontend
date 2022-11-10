@@ -5,7 +5,7 @@
       <SidebarRightPreviewCardItem
         v-for="whatsHappening in whatsHappeningItems"
       >
-        <h2 class="font-bold text-md text-gray-800 dark:text-white">
+        <h2 class="font-bold text-md text-light-primary dark:text-white">
           {{ whatsHappening.title }}
         </h2>
         <p class="text-xs text-gray-400">{{ whatsHappening.count }}</p>
@@ -23,7 +23,7 @@
               :alt="whoToFollow.name"
             />
             <div>
-              <h1 class="text-sm font-bold text-gray-900 dark:text-white">
+              <h1 class="text-sm font-bold text-light-primary dark:text-white">
                 {{ whoToFollow.name }}
               </h1>
               <p class="text-xs text-gray-400">{{ whoToFollow.handle }}</p>
@@ -31,7 +31,7 @@
           </div>
           <div class="flex h-full">
             <button
-              class="px-4 py-2 rounded-full font-bold text-sx text-white dark:text-black bg-black dark:bg-white"
+              class="px-4 py-2 rounded-full font-bold text-sx text-light-onPrimary dark:text-black bg-light-primary dark:bg-white"
             >
               Follow
             </button>

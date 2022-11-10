@@ -15,16 +15,12 @@ export const createUser = (userData: IUser) => {
 
 export const getUserByUsername = (username: string) => {
   return prisma.user.findUnique({
-    where: {
-      username,
-    },
+    where: { username },
   });
 };
 
 export const getUserById = (userId: string) => {
   return prisma.user.findUnique({
-    where: {
-      id: userId,
-    },
+    where: { id: userId },
   });
 };

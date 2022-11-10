@@ -1,10 +1,10 @@
 <template>
   <div
-    class="m-2 border rounded-2xl bg-gray-50 dark:bg-dim-700 overflow-hidden"
+    class="m-2 border rounded-2xl bg-light-onPrimary dark:bg-dim-700 overflow-hidden"
     :class="customBorderColor"
   >
     <h1
-      class="p-3 text-xl font-extrabold text-gray-900 dark:text-white border-b"
+      class="p-3 text-xl font-extrabold text-light-primary dark:text-white border-b"
       :class="customBorderColor"
     >
       {{ props.title }}

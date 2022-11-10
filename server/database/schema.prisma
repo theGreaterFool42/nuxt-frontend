@@ -52,11 +52,11 @@ model Plant {
   userId    String
   title     String
   category  String
-  image     String
+  image     String?
   plantedAt DateTime
   createdAt DateTime    @default(now()) @map(name: "created_at")
   data      PlantData[]
-  post      Post? @relation(fields: [postId], references: [id])
+  post      Post?       @relation(fields: [postId], references: [id])
   postId    String?
 
   @@map("plants")

@@ -3,7 +3,7 @@ import { decodeAccessToken } from '../api/auth/jwt';
 import { getUserById } from '../database/user';
 
 export default defineEventHandler(async (event) => {
-  const endpoints = ['/api/auth/user', '/api/user/posts'];
+  const endpoints = ['/api/auth/user', '/api/user/posts', '/api/user/plant'];
 
   const isHandledByThisMiddleware = endpoints.some((endpoints) => {
     const pattern = new UrlPattern(endpoints);
