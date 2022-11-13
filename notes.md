@@ -31,9 +31,9 @@
   - [x] User CRUD
     - [x] token
     - [x] hash/encrypt
-  - [ ] Plant CRUD
+  - [x] Plant CRUD
   - [ ] Post CRUD
-  - [ ] Plant data CRUD
+  - [x] Plant data CRUD
   - [ ] go online
 
 ---
