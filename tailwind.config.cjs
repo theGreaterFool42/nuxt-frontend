@@ -12,54 +12,92 @@ module.exports = {
     extend: {
       colors: {
         light: {
-          primary: '#2D495E',
+          primary: '#016d38',
           onPrimary: '#FFFFFF',
-          primaryContainer: '#C0C8CF',
-          onPrimaryContainer: '#2D495E',
+          primaryContainer: '#9bf6b2',
+          onPrimaryContainer: '#00210d',
 
-          secondary: '#4A708B',
+          secondary: '#506352',
           onSecondary: '#FFFFFF',
-          secondaryContainer: '#C9D4DC',
-          onSecondaryContainer: '#4A708B',
+          secondaryContainer: '#d2e8d3',
+          onSecondaryContainer: '#0d1f12',
 
-          tertiary: '#EE8449',
+          tertiary: '#3a656e',
           onTertiary: '#FFFFFF',
-          tertiaryContainer: '#FADAC8',
-          onTertiaryContainer: '#EE8449',
+          tertiaryContainer: '#beeaf5',
+          onTertiaryContainer: '#001f25',
 
-          background: '#E6E9EC',
-          onBackground: '2D495E', //primary
+          error: '#ba1a1a',
+          errorContainer: '#ffdad6',
+          onError: '#ffffff',
+          onErrorContainer: '#410002',
 
-          surface: '#E6E9EC',
-          onSurface: '#2D495E', //primary
+          background: '#fbfdf7',
+          onBackground: '191c19',
 
-          outline: '#2D495E', //primary
+          surface: '#fbfdf7',
+          onSurface: '#191c19',
+          surfaceVariant: '#dde5da',
+          onSurfaceVariant: '#414941',
+
+          outline: '#717971',
+
+          inverseOnSurface: '#f0f1ec',
+          inverseSurface: '#2e312e',
+          inversePrimary: '#80d998',
+
+          shadow: '#000000',
+
+          surfaceTint: '#016d38',
+
+          outlineVariant: '#c1c9bf',
+
+          scrim: '#000000',
 
           textColor: '#000000',
         },
         dark: {
-          primary: '#2D495E',
-          onPrimary: '#192734',
-          primaryContainer: '#38444d',
-          onPrimaryContainer: '#2D495E',
+          primary: '#80d998',
+          onPrimary: '#00391a',
+          primaryContainer: '#005228',
+          onPrimaryContainer: '#9bf6b2',
 
-          secondary: '#4A708B',
-          onSecondary: '#FFFFFF',
-          secondaryContainer: '#C9D4DC',
-          onSecondaryContainer: '#4A708B',
+          secondary: '#b7ccb8',
+          onSecondary: '#223526',
+          secondaryContainer: '#384b3c',
+          onSecondaryContainer: '#d2e8d3',
 
-          tertiary: '#EE8449',
-          onTertiary: '#FFFFFF',
-          tertiaryContainer: '#FADAC8',
-          onTertiaryContainer: '#EE8449',
+          tertiary: '#a2ced9',
+          onTertiary: '#01363f',
+          tertiaryContainer: '#204d56',
+          onTertiaryContainer: '#beeaf5',
 
-          background: '#15202B',
-          onBackground: '2D495E', //primary
+          error: '#ffb4ab',
+          errorContainer: '#93000a',
+          onError: '#690005',
+          onErrorContainer: '#ffdad6',
 
-          surface: '#E6E9EC',
-          onSurface: '#2D495E', //primary
+          background: '#191c19',
+          onBackground: 'e1e3de',
 
-          outline: '#2D495E', //primary
+          surface: '#191c19',
+          onSurface: '#e1e3de',
+          surfaceVariant: '#414941',
+          onSurfaceVariant: '#c1c9bf',
+
+          outline: '#8b938a',
+
+          inverseOnSurface: '#191c19',
+          inverseSurface: '#e1e3de',
+          inversePrimary: '#016d38',
+
+          shadow: '#000000',
+
+          surfaceTint: '#80d998',
+
+          outlineVariant: '#414941',
+
+          scrim: '#000000',
 
           textColor: '#FFFFFF',
         },

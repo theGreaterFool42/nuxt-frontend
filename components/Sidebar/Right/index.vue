@@ -39,6 +39,7 @@
         </div>
       </SidebarRightPreviewCardItem>
     </SidebarRightPreviewCard>
+    <PostPlant></PostPlant>
   </div>
 </template>
 <script setup>

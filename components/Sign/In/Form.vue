@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <MDCardElevated>
     <div class="pt-5 space-y-6">
       <UIInput
         v-model="data.username"
@@ -14,9 +14,10 @@
       />
       <div>
         <button @click="handleLogin">SignIn</button>
+        <MDButtonElevated>Klaus</MDButtonElevated>
       </div>
     </div>
-  </div>
+  </MDCardElevated>
 </template>
 
 <script setup lang="ts">

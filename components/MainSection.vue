@@ -1,9 +1,11 @@
 <template>
   <div class="border-x" :class="customBorderColor">
     <div
-      class="sticky top-0 px-4 py-3 bg-white/80 backdrop-blur-md dark:bg-dim-900/80"
+      class="sticky top-0 px-4 py-3 bg-light-background dark:bg-dark-background backdrop-blur-md"
     >
-      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">
+      <h2
+        class="text-xl font-bold text-light-textColor dark:text-dark-textColor"
+      >
         {{ props.title }}
       </h2>
     </div>
