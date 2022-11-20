@@ -1,4 +1,4 @@
-import prisma from './client';
+import prisma from '~~/server/database/client';
 import { ISession } from '~~/types/ISession';
 export const createSession = (session: ISession) => {
   return prisma.session.create({

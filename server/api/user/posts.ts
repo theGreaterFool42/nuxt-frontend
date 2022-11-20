@@ -1,5 +1,5 @@
 import formidable from 'formidable';
-import { createPost } from '~~/server/database/post';
+import { createPost } from '~~/server/database/repositories/postRepository';
 import { postTransformer } from '~~/server/transformers/post';
 import { IPost } from '~~/types/IPost';
 

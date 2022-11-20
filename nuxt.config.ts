@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
+    'nuxt-icon',
     // [
     //   '@pinia/nuxt',
     //   {

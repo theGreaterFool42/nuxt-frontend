@@ -39,10 +39,19 @@
         </div>
       </SidebarRightPreviewCardItem>
     </SidebarRightPreviewCard>
-    <PostPlant></PostPlant>
+    <PostPlant :plant="testPlant"></PostPlant>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
+import { IPlant } from '~~/types/IPlant';
+
+const testPlant = ref({
+  title: 'Schneller Ede',
+  category: 'Recreational',
+  plantedAt: new Date(),
+  image: '/img/basil_small.png',
+} as IPlant);
+
 const whatsHappeningItems = ref([
   {
     title: 'Cooler Kram',

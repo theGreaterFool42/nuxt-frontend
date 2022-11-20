@@ -22,7 +22,9 @@
       </div>
 
       <!--Text Slot-->
-      <div>
+      <div
+        class="text-light-textColor dark:text-dark-textColor font-normal pb-2"
+      >
         <slot name="text" />
       </div>
       <!--Buttons Slot-->

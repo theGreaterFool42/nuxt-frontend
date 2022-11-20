@@ -6,9 +6,13 @@
   >
     <slot></slot>
     <div class="w-6 h-6 text-dark">
-      <div v-if="useColorMode().preference == 'dark'"><SunIcon /></div>
-      <div v-else-if="colorMode == 'light'"><MoonIcon /></div>
-      <div v-else><MoonIcon /></div>
+      <div v-if="useColorMode().preference == 'dark'">
+        <Icon name="ic:outline-light-mode"></Icon>
+      </div>
+      <div v-else-if="colorMode == 'light'">
+        <Icon name="ic:outline-dark-mode"></Icon>
+      </div>
+      <div v-else><Icon name="ic:outline-dark-mode"></Icon></div>
     </div>
     <div class="hidden ml-4 text-xl xl:block" :class="textClasses">
       <slot name="name"></slot>
@@ -17,8 +21,6 @@
 </template>
 
 <script setup lang="ts">
-import { SunIcon, MoonIcon } from '@heroicons/vue/24/solid';
-
 const { defaultTransition } = useTailwindConfig();
 const props = defineProps({
   active: {

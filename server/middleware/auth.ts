@@ -1,6 +1,6 @@
 import UrlPattern from 'url-pattern';
 import { decodeAccessToken } from '../api/auth/jwt';
-import { getUserById } from '../database/user';
+import { getUserById } from '../database/repositories/userRepository';
 
 export default defineEventHandler(async (event) => {
   const endpoints = ['/api/auth/user', '/api/user/posts', '/api/user/plant'];
@@ -8,15 +8,31 @@ export default defineEventHandler(async (event) => {
   const isHandledByThisMiddleware = endpoints.some((endpoints) => {
     const pattern = new UrlPattern(endpoints);
 
-    return pattern.match(event.req.url!);
+    return pattern.match(event.node.req.url!);
   });
 
   if (!isHandledByThisMiddleware) {
     return;
   }
-  const token = event.req.headers['authorization']?.split(' ')[1];
+  console.log('######################');
+  console.log('######################');
+  console.log('######################');
+  console.log('######################');
+  console.log('######################');
+  console.log(
+    'token',
+    event.node.req.headers['cookie']?.split('refresh_token=')[1]
+  );
+  console.log(
+    'decodedToken',
+    decodeAccessToken(
+      event.node.req.headers['cookie']?.split('refresh_token=')[1]
+    )
+  );
+  const token = event.node.req.headers['cookie']?.split('refresh_token=')[1];
 
   const decodedToken = decodeAccessToken(token as string);
+  if (decodedToken) console.log('decodedToken', decodedToken);
 
   if (!decodedToken) {
     return sendError(

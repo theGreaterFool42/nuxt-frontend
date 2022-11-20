@@ -1,12 +1,10 @@
-import { getSessionByToken } from '~~/server/database/session';
-import { getUserById } from '~~/server/database/user';
+import { getSessionByToken } from '~~/server/database/repositories/sessionRepository';
+import { getUserById } from '~~/server/database/repositories/userRepository';
 import { IUser } from '~~/types/IUser';
 import { decodeRefreshToken, generateTokens } from './jwt';
 
 export default defineEventHandler(async (event) => {
-  const cookies = useCookies(event);
-
-  const refreshToken = cookies.refresh_token;
+  const refreshToken = getCookie(event, 'refresh_token');
 
   if (!refreshToken) {
     return sendError(

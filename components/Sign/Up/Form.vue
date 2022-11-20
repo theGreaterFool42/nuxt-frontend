@@ -1,35 +1,38 @@
 <template>
-  <div>
-    <div class="pt-5 space-y-6">
-      <UIInput v-model="data.name" label="Name" placeholder="Name" />
-      <UIInput
-        v-model="data.username"
-        label="Username"
-        placeholder="@username"
-      />
-      <UIInput
-        v-model="data.email"
-        label="Email"
-        placeholder="name@e-mail.com"
-        type="email"
-      />
-      <UIInput
-        v-model="data.password"
-        label="Password"
-        placeholder="******"
-        type="password"
-      />
-      <UIInput
-        v-model="data.repeatPassword"
-        label=" Repeat password"
-        placeholder="******"
-        type="password"
-      />
-      <div>
-        <button @click="handleLogin">SignUp</button>
+  <MDCardElevated>
+    <template v-slot:headline><h1>Sign up</h1></template>
+    <template v-slot:text>
+      <div class="pt-5 space-y-6">
+        <UIInput v-model="data.name" label="Name" placeholder="Name" />
+        <UIInput
+          v-model="data.username"
+          label="Username"
+          placeholder="@username"
+        />
+        <UIInput
+          v-model="data.email"
+          label="Email"
+          placeholder="name@e-mail.com"
+          type="email"
+        />
+        <UIInput
+          v-model="data.password"
+          label="Password"
+          placeholder="******"
+          type="password"
+        />
+        <UIInput
+          v-model="data.repeatPassword"
+          label=" Repeat password"
+          placeholder="******"
+          type="password"
+        />
       </div>
-    </div>
-  </div>
+    </template>
+    <template v-slot:buttons>
+      <MDButtonElevated @click="handleLogin">Submit</MDButtonElevated>
+    </template>
+  </MDCardElevated>
 </template>
 
 <script setup lang="ts">

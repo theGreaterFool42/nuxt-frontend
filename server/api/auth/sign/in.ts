@@ -1,12 +1,12 @@
 import { IUser } from '~~/types/IUser';
-import { getUserByUsername } from '~~/server/database/user';
+import { getUserByUsername } from '~~/server/database/repositories/userRepository';
 import bcrypt from 'bcrypt';
 import { generateTokens, sendRefreshToken } from '../jwt';
-import { createSession } from '~~/server/database/session';
+import { createSession } from '~~/server/database/repositories/sessionRepository';
 import { userTransformer } from '~~/server/transformers/user';
 
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  const body = await readBody(event);
 
   const { username, password } = body;
 

@@ -1,10 +1,10 @@
 import { sendError } from 'h3';
-import { createUser } from '~~/server/database/user';
+import { createUser } from '~~/server/database/repositories/userRepository';
 import { userTransformer } from '~~/server/transformers/user';
 import { IUser } from '~~/types/IUser';
 
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  const body = await readBody(event);
 
   const { username, email, password, repeatPassword, name } = body;
 

@@ -1,22 +1,24 @@
 <template>
   <MDCardElevated>
-    <div class="pt-5 space-y-6">
-      <UIInput
-        v-model="data.username"
-        label="Username"
-        placeholder="@username"
-      />
-      <UIInput
-        v-model="data.password"
-        label="Password"
-        placeholder="******"
-        type="password"
-      />
-      <div>
-        <button @click="handleLogin">SignIn</button>
-        <MDButtonElevated>Klaus</MDButtonElevated>
+    <template v-slot:headline><h1>Sign in</h1></template>
+    <template v-slot:text>
+      <div class="pt-5 space-y-6">
+        <UIInput
+          v-model="data.username"
+          label="Username"
+          placeholder="@username"
+        />
+        <UIInput
+          v-model="data.password"
+          label="Password"
+          placeholder="******"
+          type="password"
+        />
       </div>
-    </div>
+    </template>
+    <template v-slot:buttons>
+      <MDButtonElevated @click="handleLogin">Submit</MDButtonElevated>
+    </template>
   </MDCardElevated>
 </template>
 

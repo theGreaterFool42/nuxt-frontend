@@ -1,4 +1,4 @@
-import prisma from './client';
+import prisma from '~~/server/database/client';
 import { IPlantData } from '~~/types/IPlantData';
 
 export const createPlantData = (plantData: IPlantData, plantId: string) => {
