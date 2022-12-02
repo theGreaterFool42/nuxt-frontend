@@ -1,39 +1,41 @@
-import { sendError } from 'h3';
-import { createUser } from '~~/server/database/repositories/userRepository';
-import { userTransformer } from '~~/server/transformers/user';
-import { IUser } from '~~/types/IUser';
+import { H3Event, sendError } from 'h3';
+import bcrypt from 'bcrypt';
+import { IUser } from '~/types/IUser';
+import { createUser } from '~/server/database/repositories/userRepository';
+import { ZodError } from 'zod';
+import sendDefaultErrorResponse from '~~/server/errors/responses/DefaultErrorsResponse';
+import registerRequest from '~/server/formRequests/RegisterRequest';
+import { validateUser } from '~/server/services/userService';
+import { makeSession } from '~~/server/services/sessionService';
+import sendZodErrorResponse from '~~/server/errors/responses/ZodErrorsResponse';
 
-export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
+export default eventHandler(async (event: H3Event) => {
+  try {
+    const data = await registerRequest(event);
+    const validation = await validateUser(data);
 
-  const { username, email, password, repeatPassword, name } = body;
+    if (validation.hasErrors === true && validation.errors) {
+      const errors = JSON.stringify(Object.fromEntries(validation.errors));
+      return sendError(event, createError({ statusCode: 422, data: errors }));
+    }
 
-  if (!username || !email || !password || !repeatPassword || !name) {
-    return sendError(
-      event,
-      createError({ statusCode: 400, statusMessage: 'Invalid params' })
-    );
+    const encryptedPassword: string = await bcrypt.hash(data.password, 10);
+
+    const userData: IUser = {
+      username: data.username,
+      name: data.name,
+      email: data.email,
+      password: encryptedPassword,
+    };
+
+    const user = await createUser(userData);
+
+    return await makeSession(user, event);
+  } catch (error: any) {
+    if (error.data instanceof ZodError) {
+      return await sendZodErrorResponse(event, error.data);
+    }
+
+    return await sendDefaultErrorResponse(event, 'oops', 500, error);
   }
-
-  if (password !== repeatPassword) {
-    return sendError(
-      event,
-      createError({ statusCode: 400, statusMessage: 'Passwords do not match' })
-    );
-  }
-
-  const userData: IUser = {
-    username,
-    email,
-    password,
-    name,
-    //TODO: replace with default image
-    profileImage: 'https://picsum.photos/200/200',
-  };
-
-  const user = await createUser(userData);
-
-  return {
-    body: userTransformer(user as IUser),
-  };
 });

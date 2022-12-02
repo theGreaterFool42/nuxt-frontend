@@ -29,12 +29,9 @@
         <template v-slot:name>Settings</template>
       </SidebarLeftTab>
 
-      <SidebarLeftTab link="/signOut">
-        <template v-slot:icon>
-          <Icon name="material-symbols:logout" />
-        </template>
-        <template v-slot:name>Logout</template>
-      </SidebarLeftTab>
+      <SidebarLeftSignOutButton>
+        <template v-slot:name>SignOut</template>
+      </SidebarLeftSignOutButton>
       <SidebarLeftDarkModeButton>
         <template v-slot:name>DarkMode</template>
       </SidebarLeftDarkModeButton>

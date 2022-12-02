@@ -2,7 +2,7 @@
   <MDCardElevated>
     <template v-slot:headline><h1>Sign up</h1></template>
     <template v-slot:text>
-      <div class="pt-5 space-y-6">
+      <div class="pt-5 space-y-6 text-light-textColor">
         <UIInput v-model="data.name" label="Name" placeholder="Name" />
         <UIInput
           v-model="data.username"
@@ -46,12 +46,9 @@ const data = reactive({
 });
 
 function handleLogin() {
-  const { signUp } = useAuth();
   data.loading = true;
   try {
-    signUp({
-      ...data,
-    });
+    registerWithEmail(data.username, data.name, data.email, data.password);
   } catch (error) {
   } finally {
     data.loading = false;

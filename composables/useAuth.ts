@@ -1,126 +1,87 @@
-import { JwtPayload } from 'jsonwebtoken';
-import jwt_decode from 'jwt-decode';
-import { ISignUp } from '~~/types/ISignUp';
+import { ISession } from '~~/types/ISession';
 import { IUser } from '~~/types/IUser';
+import useErrorMapper from './useErrorMapper';
 
-export default () => {
-  const useAuthToken = () => useState('auth_token');
-  const useAuthUser = () => useState('auth_user');
-  const useAuthLoading = () => useState('auth_loading', () => true);
+export const useAuthCookie = () => useCookie('auth_token');
 
-  const setToken = (newToken: string) => {
-    const authToken = useAuthToken();
-    authToken.value = newToken;
-  };
+export async function useUser(): Promise<IUser | null> {
+  const authCookie = useAuthCookie().value;
+  const user = useState<IUser | null>('user');
 
-  const setUser = (newUser: IUser) => {
-    const authUser = useAuthUser();
-    authUser.value = newUser;
-  };
+  if (authCookie && !user.value) {
+    const cookieHeaders = useRequestHeaders(['cookie']);
 
-  const setIsAuthLoading = (isLoading: boolean) => {
-    const authLoading = useAuthLoading();
-    authLoading.value = isLoading;
-  };
-
-  const signIn = (username: string, password: string) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await $fetch('/api/auth/sign/in', {
-          method: 'POST',
-          body: { username, password },
-        });
-        setToken(response.access_token);
-        setUser(response.user);
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      }
+    const { data } = await useFetch<IUser>(`/api/auth/getByAuthToken`, {
+      headers: cookieHeaders as HeadersInit,
     });
-  };
-  const signUp = (signUpRequest: ISignUp) => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await $fetch('/api/auth/sign/up', {
-          method: 'POST',
-          body: {
-            name: signUpRequest.name,
-            username: signUpRequest.username,
-            email: signUpRequest.email,
-            password: signUpRequest.password,
-            repeatPassword: signUpRequest.repeatPassword,
-          },
-        });
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      }
+
+    user.value = data.value;
+  }
+
+  return user.value;
+}
+
+export async function useLoggedIn() {
+  const user = await useUser();
+
+  if (!user) {
+    return false;
+  }
+
+  if (user?.id == null) {
+    return false;
+  }
+
+  return true;
+}
+
+export async function userLogout() {
+  await useFetch('/api/auth/sign/out');
+  useState('user').value = null;
+  await useRouter().push('/');
+}
+
+export async function registerWithEmail(
+  username: string,
+  name: string,
+  email: string,
+  password: string
+): Promise<FormValidation> {
+  try {
+    const data = await $fetch<ISession>('/api/auth/sign/up', {
+      method: 'POST',
+      body: { username, name, email, password },
     });
-  };
 
-  const refreshSessionToken = () => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await $fetch('/api/auth/refresh');
-
-        setToken(response.access_token as string);
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
-
-  const getUser = () => {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const response = await useFetchApi('/api/auth/user');
-        //@ts-ignore
-        setUser(response!.user);
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      }
-    });
-  };
-
-  const refreshSession = () => {
-    const authToken = useAuthToken();
-    if (!authToken.value) {
-      return;
+    if (data) {
+      useState('user').value = data;
+      await useRouter().push('/plantOverview');
     }
-    const jwt = jwt_decode(authToken.value as string) as JwtPayload;
-    const newRefreshTime = jwt.exp! - 60000;
 
-    //if session token still valid and the user is logged in, send a new one
-    setTimeout(async () => {
-      await refreshSessionToken();
-      refreshSession();
-    }, 300000);
-  };
+    return { hasErrors: false, loggedIn: true };
+  } catch (error: any) {
+    return useErrorMapper(error.data.data);
+  }
+}
 
-  const initAuth = () => {
-    return new Promise(async (resolve, reject) => {
-      setIsAuthLoading(true);
-      try {
-        await refreshSessionToken();
-        await getUser();
-        refreshSession();
-        resolve(true);
-      } catch (error) {
-        reject(error);
-      } finally {
-        setIsAuthLoading(false);
-      }
+export async function loginWithEmail(
+  usernameOrEmail: string,
+  password: string
+): Promise<FormValidation> {
+  try {
+    const result = await $fetch('/api/auth/sign/in', {
+      method: 'POST',
+      body: { usernameOrEmail: usernameOrEmail, password: password },
     });
-  };
 
-  return {
-    signIn,
-    signUp,
-    useAuthUser,
-    useAuthToken,
-    useAuthLoading,
-    initAuth,
-  };
-};
+    if (!result?.id) {
+      throw Error('something went wrong');
+    }
+    useState('user').value = result;
+    await useRouter().push('/plantOverview');
+
+    return { hasErrors: false, loggedIn: true };
+  } catch (error: any) {
+    return useErrorMapper(error.data.data);
+  }
+}
