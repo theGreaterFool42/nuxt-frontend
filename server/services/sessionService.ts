@@ -12,11 +12,13 @@ export async function makeSession(
   event: H3Event
 ): Promise<User | undefined> {
   const authToken = uuidv4().replaceAll('-', '');
-  const session = await createSession({ authToken, userId: user.id });
+  const session = await createSession({ authToken, user: user });
   const userId = session.userId;
 
   if (userId) {
+    console.log(event);
     setCookie(event, 'auth_token', authToken, { path: '/', httpOnly: true });
+    console.log('cookie set', authToken);
     return getUserBySessionToken(authToken);
   }
 

@@ -39,9 +39,6 @@ export default eventHandler(async (event: H3Event) => {
     );
 
     if (!isPasswordCorrect) {
-      console.log('data', data.password);
-      console.log('user', user.password);
-      console.log(data);
       sendError(
         event,
         createError({ statusCode: 401, data: standardAuthError })

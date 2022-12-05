@@ -17,25 +17,24 @@ export async function useUser(): Promise<IUser | null> {
 
     user.value = data.value;
   }
-
   return user.value;
 }
 
-export async function useLoggedIn() {
-  const user = await useUser();
+// export async function useLoggedIn() {
+//   const user = await useUser();
 
-  if (!user) {
-    return false;
-  }
+//   if (!user) {
+//     return false;
+//   }
 
-  if (user?.id == null) {
-    return false;
-  }
+//   if (user?.id == null) {
+//     return false;
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
-export async function userLogout() {
+export async function userSignOut() {
   await useFetch('/api/auth/sign/out');
   useState('user').value = null;
   await useRouter().push('/');
@@ -55,6 +54,7 @@ export async function registerWithEmail(
 
     if (data) {
       useState('user').value = data;
+      // useAuthStore().signIn(data.user as IUser);
       await useRouter().push('/plantOverview');
     }
 
@@ -77,6 +77,7 @@ export async function loginWithEmail(
     if (!result?.id) {
       throw Error('something went wrong');
     }
+    // useAuthStore().signIn(result as IUser);
     useState('user').value = result;
     await useRouter().push('/plantOverview');
 

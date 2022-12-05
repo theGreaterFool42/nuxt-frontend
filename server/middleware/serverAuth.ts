@@ -17,6 +17,7 @@ async function protectAuthRoute(event: H3Event): Promise<boolean> {
     '/api/user/plant',
     '/api/user/plantData',
     '/api/user/posts',
+    '/settings',
   ];
 
   if (!event?.path || !protectedRoutes.includes(event.path)) {

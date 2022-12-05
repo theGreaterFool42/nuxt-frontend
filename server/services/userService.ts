@@ -42,6 +42,5 @@ export async function authCheck(event: H3Event): Promise<boolean> {
   if (user?.id) {
     return true;
   }
-
   return false;
 }

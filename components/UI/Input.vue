@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { H3Event } from 'h3';
-
 const emits = defineEmits(['update:modelValue']);
 const props = defineProps({
   modelValue: { type: String, required: true },

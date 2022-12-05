@@ -19,7 +19,7 @@
   - [ ] component to list/search plants
   - [ ] make a post to telegram/whatsapp
     - [ ] should this be in the backend?
-  - [ ] global tailwind config for light/dark theme
+  - [x] global tailwind config for light/dark theme
   - [ ] admin panel to
     - [ ] to display users
     - [ ] to delete users

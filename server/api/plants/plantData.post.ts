@@ -1,4 +1,4 @@
-import { IPlantData } from '~/types/IPlantData';
+import { IPlantData } from '~~/types/IPlantData';
 import { createPlantData } from '~~/server/database/repositories/plantDataRepository';
 export default defineEventHandler(async (event) => {
   const body: IPlantData = await readBody(event);

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1 class="text-red-500 dark:text-dim-500">Plant Overview</h1>
-    <MDButtonElevated @click="addPlants">AddPlants</MDButtonElevated>
-    <p class="text-black dark:text-white">
-      Here will be a template for the plant view at some point.
-    </p>
+    <MDTextFieldOutlined
+      v-model="data.query"
+      :label="data.query"
+      placeholder="Search"
+      :onchange="fetchPlants"
+    />
     <div class="plantView flex flex-row flex-wrap">
       <div v-for="plant in plants" class="w-96 p-2">
         <PostPlant :plant="plant"></PostPlant>
@@ -15,23 +16,25 @@
 
 <script setup lang="ts">
 import { IPlant } from '~/types/IPlant';
-const { getPlants } = usePlants();
+const data = reactive({ query: '' });
+const { getPlantsByCategory } = usePlants();
 definePageMeta({
   layout: 'cards',
 });
 
 const plants = ref([] as IPlant[]);
-const testPlant = ref({
-  title: 'Klaus',
-  category: 'Awesome Plant',
-  plantedAt: new Date(),
-} as IPlant);
+const fetchedPlants = ref([] as IPlant[]);
 
-const addPlants = () => {
-  plants.value.push(testPlant.value);
-  console.log('plant');
+const fetchPlants = async () => {
+  fetchedPlants.value = await getPlantsByCategory(data.query);
+  //@ts-ignore
+  plants.value = fetchedPlants.value.plants;
 };
+watch(
+  () => data.query,
+  () => fetchPlants()
+);
 onMounted(() => {
-  getPlants();
+  fetchPlants();
 });
 </script>

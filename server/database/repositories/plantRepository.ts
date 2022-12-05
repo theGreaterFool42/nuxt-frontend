@@ -30,6 +30,8 @@ export const getPlantsByCategory = (category: string) => {
 
 //TODO: test this
 export const getPlantsByUserId = (userId: string) => {
+  // const user = useState('user');
+  // console.log(user.value);
   return prisma.plant.findMany({
     where: { userId: userId },
   });

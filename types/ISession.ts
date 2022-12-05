@@ -1,7 +1,7 @@
 import { User } from '@prisma/client';
 
 export interface ISession {
-  authToken?: string;
+  authToken: string;
   user?: User;
   userId?: string;
 }
