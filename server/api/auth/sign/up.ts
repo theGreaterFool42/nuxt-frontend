@@ -8,6 +8,7 @@ import registerRequest from '~/server/formRequests/RegisterRequest';
 import { validateUser } from '~/server/services/userService';
 import { makeSession } from '~~/server/services/sessionService';
 import sendZodErrorResponse from '~~/server/errors/responses/ZodErrorsResponse';
+import { User } from '@prisma/client';
 
 export default eventHandler(async (event: H3Event) => {
   try {
@@ -30,7 +31,7 @@ export default eventHandler(async (event: H3Event) => {
 
     const user = await createUser(userData);
 
-    return await makeSession(user, event);
+    return await makeSession(user as User, event);
   } catch (error: any) {
     if (error.data instanceof ZodError) {
       return await sendZodErrorResponse(event, error.data);
