@@ -1,25 +1,12 @@
-import { defineNuxtConfig } from 'nuxt'
+// import { defineNuxtConfig } from 'nuxt';
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  // css: ["vuetify/lib/styles/main.sass", "mdi/css/materialdesignicons.min.css"],
-  // css: ['vuetify/styles'],
-  // build: {
-  //   transpile: ["vuetify"],
-  // },
-  // vite: {
-  //   ssr: {
-  //     noExternal: ['vuetify']
-  //   },
-  //   define: {
-  //     "process.env.DEBUG": false,
-  //   },
-  // },
-  // nitro: {
-  //   externals: {inline: ['uuid']}
-  // },
+  // ssr: false,
   modules: [
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/color-mode',
+    'nuxt-icon',
     [
       '@pinia/nuxt',
       {
@@ -32,4 +19,19 @@ export default defineNuxtConfig({
       },
     ],
   ],
-}); 
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+    configPath: 'tailwind.config.cjs',
+    exposeConfig: false,
+    config: { content: [] },
+    injectPosition: 0,
+    viewer: true,
+  },
+  colorMode: {
+    classSuffix: '',
+  },
+  runtimeConfig: {
+    jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECRET,
+    jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECRET,
+  },
+});

@@ -1,23 +1,40 @@
 <template>
-  <div class="dark">
-    <h1 class="text-red-500 dark:text-dim-500">Plant Overview</h1>
-    <p>Here will be a template for the plant view at some point.</p>
-    <button @click="plantStore.add(testPlant)">Add Plant</button>
-    <p>{{ plantStore.plants }}</p>
-    <NuxtLink to="/test">Test</NuxtLink>
+  <div>
+    <MDTextFieldOutlined
+      v-model="data.query"
+      :label="data.query"
+      placeholder="Search"
+      :onchange="fetchPlants"
+    />
+    <div class="plantView flex flex-row flex-wrap">
+      <div v-for="plant in plants" class="w-96 p-2">
+        <PostPlant :plant="plant"></PostPlant>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { usePlantStore } from '~~/store/plantStore';
-import { IPlantToAdd } from '~~/types/Plant';
-const testPlant = ref({ title: 'Klaus', category: 'Awesome Plant', plantedAt: new Date() } as IPlantToAdd)
-const plantStore = usePlantStore()
-console.log(plantStore.plants);
+import { IPlant } from '~/types/IPlant';
+const data = reactive({ query: '' });
+const { getPlantsByCategory } = usePlants();
+definePageMeta({
+  layout: 'cards',
+});
 
+const plants = ref([] as IPlant[]);
+const fetchedPlants = ref([] as IPlant[]);
 
-</script> 
-
-<style>
-
-</style>
+const fetchPlants = async () => {
+  fetchedPlants.value = await getPlantsByCategory(data.query);
+  //@ts-ignore
+  plants.value = fetchedPlants.value.plants;
+};
+watch(
+  () => data.query,
+  () => fetchPlants()
+);
+onMounted(() => {
+  fetchPlants();
+});
+</script>
